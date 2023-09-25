@@ -13,11 +13,11 @@ export async function POST({ request }) {
     let emails : string[] = [];
     plan.recipients.map(r => { emails = [...emails, r.email] });
     const resend_data = await resend.emails.send({
-      from: "Plans <onboarding@resend.dev>",
+      from: "Rendevouz <onboarding@resend.dev>",
       to: emails,
       subject: plan.description,
       html: `
-      <strong>PLANS MADE</strong>
+      <strong>Rendevouz RN</strong>
       <p>${plan.description}</p>
       <p>Participants: ${emails.toString()}</p>
       <p>TIME: ${plan.time}</p>
