@@ -10,7 +10,6 @@ export const actions = {
     const description = form_data.get("description");
     const time = form_data.get("time");
 
-    /**
     const plan_data = await prisma.plan.create({
       data: {
         description,
@@ -41,9 +40,8 @@ export const actions = {
 
     console.log({ resend_data });
 
-    */
 
-    const qstash_data = await fetch("https://qstash.upstash.io/v1/publish/https://7862-2600-6c50-6500-2db-00-1c02.ngrok-free.app/api/rendevouz", {
+    const qstash_data = await fetch("https://qstash.upstash.io/v1/publish/https://5fcd-2600-6c50-6500-2db-00-1c02.ngrok-free.app/api/rendevouz", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${QSTASH_TOKEN}`,
