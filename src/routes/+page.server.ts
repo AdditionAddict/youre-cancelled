@@ -41,7 +41,7 @@ export const actions = {
     console.log({ resend_data });
 
 
-    const qstash_data = await fetch("https://qstash.upstash.io/v1/publish/https://5fcd-2600-6c50-6500-2db-00-1c02.ngrok-free.app/api/rendevouz", {
+    const qstash_data = await fetch("https://qstash.upstash.io/v1/publish/https://youre-cancelled.vercel.app/api/rendevouz", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${QSTASH_TOKEN}`,
