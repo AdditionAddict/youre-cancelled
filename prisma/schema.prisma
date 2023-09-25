@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Plan {
+  id          String      @id @default(cuid())
+  description String
+  time        DateTime
+  recipients  Recipient[]
+}
+
+model Recipient {
+  id        String  @id @default(cuid())
+  email     String
+  cancelled Boolean @default(false)
+  plan      Plan    @relation(fields: [planId], references: [id], onDelete: Cascade)
+  planId    String
+}
