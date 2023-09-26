@@ -47,7 +47,7 @@ export const actions = {
     console.log({ resend_data });
 
     const qstash_data = await fetch(
-      "https://qstash.upstash.io/v1/publish/https://a897-86-4-63-62.ngrok-free.app/api/rendevouz",
+      `https://qstash.upstash.io/v1/publish/${process.env.SITE_URL}/api/rendevouz`,
       {
         method: "POST",
         headers: {
