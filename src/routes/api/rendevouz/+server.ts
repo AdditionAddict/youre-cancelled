@@ -3,8 +3,14 @@ import { resend } from "$lib/server/resend";
 import { json } from "@sveltejs/kit";
 
 export async function POST({ request }) {
-  console.log(request.body);
-  const { id } = await request.body;
+  const bodyPromise = new Response(request.body, {
+    headers: { "Content-Type": "application.json" },
+  }).json();
+
+  const body = await bodyPromise;
+  console.log(`POST body ${JSON.stringify(body)}`);
+
+  const { id } = body;
   const plan = await prisma.plan.findUnique({
     where: { id },
     include: { recipients: true },

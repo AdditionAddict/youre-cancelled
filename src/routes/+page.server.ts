@@ -46,6 +46,8 @@ export const actions = {
 
     console.log({ resend_data });
 
+    const timeAsSeconds = Math.floor(new Date(time.valueOf()).getTime() / 1000);
+
     const qstash_data = await fetch(
       `https://qstash.upstash.io/v1/publish/${process.env.SITE_URL}/api/rendevouz`,
       {
@@ -53,8 +55,9 @@ export const actions = {
         headers: {
           Authorization: `Bearer ${QSTASH_TOKEN}`,
           "Content-Type": "application/json",
+          "Upstash-Not-Before": `${timeAsSeconds}`,
         },
-        body: JSON.stringify({ email: emailOne }),
+        body: JSON.stringify({ id: resend_data.id }),
       }
     );
 
